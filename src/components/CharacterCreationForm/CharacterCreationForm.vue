@@ -4,39 +4,58 @@
     <form class='character-creation-form-container'>
       <section>
         <label>Character&apos;s name</label>
-        <input placeholder="Full Name" type="text" />
+        <input v-model="characterName" placeholder="Full Name" type="text" />
         <label>Character&apos;s Age</label>
-        <input placeholder="18" type="number" />
+        <input v-model="characterAge" placeholder="18" type="number" />
       </section>
       <section>
         <label>Character&apos;s Gender</label>
-        <select>
+        <select v-model="characterGender">
           <option>Male</option>
           <option>Female</option>
         </select>
         <label>Hardcore Mode</label>
-        <select>
+        <select v-model="hardcoreMode">
           <option>No</option>
           <option>Yes</option>
         </select>
       </section>
       <label>Short story</label>
       <span></span>
-      <textarea></textarea>
-      <Button title="Submit" />
+      <textarea v-model="story"></textarea>
+      <Button :isDisabled="!isFormValid" title="Submit" />
     </form>
-
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 import Button from '../Button/Button.vue';
 
 export default defineComponent({
   name: 'CharacterCreationForm',
   components: {
     Button
+  },
+  setup() {
+    const characterName = ref("");
+    const characterAge = ref(0);
+    const characterGender = ref("Male");
+    const hardcoreMode = ref("No");
+    const story = ref("");
+
+    const isValidName = computed(() => characterName.value.trim().length > 0);
+    const isValidAge = computed(() => characterAge.value > 0);
+    const isFormValid = computed(() => isValidName.value && isValidAge.value);
+
+    return {
+      characterName,
+      characterAge,
+      characterGender,
+      hardcoreMode,
+      story,
+      isFormValid
+    }
   }
 });
 </script>
