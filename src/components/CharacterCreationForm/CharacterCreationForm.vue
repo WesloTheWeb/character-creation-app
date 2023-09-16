@@ -2,24 +2,26 @@
   <section>
     <h1>Character Creation Application</h1>
     <form class='character-creation-form-container'>
-      <section>
-        <label>Character&apos;s name</label>
-        <input v-model="characterName" placeholder="Full Name" type="text" />
-        <label>Character&apos;s Age</label>
-        <input v-model="characterAge" placeholder="18" type="number" />
-      </section>
-      <section>
-        <label>Character&apos;s Gender</label>
-        <select v-model="characterGender">
-          <option>Male</option>
-          <option>Female</option>
-        </select>
-        <label>Hardcore Mode</label>
-        <select v-model="hardcoreMode">
-          <option>No</option>
-          <option>Yes</option>
-        </select>
-      </section>
+      <div class="character-section-grid">
+        <section>
+          <label>Character&apos;s name</label>
+          <input v-model="characterName" placeholder="Full Name" type="text" />
+          <label>Character&apos;s Age</label>
+          <input v-model="characterAge" placeholder="18" type="number" />
+        </section>
+        <section>
+          <label>Character&apos;s Gender</label>
+          <select v-model="characterGender">
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+          <label>Hardcore Mode</label>
+          <select v-model="hardcoreMode">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </section>
+      </div>
       <label>Short story</label>
       <span></span>
       <textarea v-model="story"></textarea>
@@ -44,8 +46,8 @@ export default defineComponent({
     const hardcoreMode = ref("No");
     const story = ref("");
 
-    const isValidName = computed(() => characterName.value.trim().length > 0);
-    const isValidAge = computed(() => characterAge.value > 0);
+    const isValidName = computed(() => characterName.value.trim().length >= 2);
+    const isValidAge = computed(() => characterAge.value > 1);
     const isFormValid = computed(() => isValidName.value && isValidAge.value);
 
     return {
