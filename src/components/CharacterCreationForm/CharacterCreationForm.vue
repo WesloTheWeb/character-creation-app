@@ -24,14 +24,13 @@
       <span></span>
       <textarea></textarea>
       <Button title="Submit" />
-
     </form>
 
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import Button from '../Button/Button.vue';
 
 export default defineComponent({

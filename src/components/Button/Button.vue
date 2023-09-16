@@ -1,7 +1,7 @@
 <template>
-    <button>{{title}}</button>
+    <button :class="{ 'buttonProps': !isDisabled, 'disabled': isDisabled }">{{ title }}</button>
 </template>
-
+  
 <script lang="ts">
 import { defineComponent } from 'vue';
 
@@ -11,7 +11,11 @@ export default defineComponent({
         title: {
             type: String,
             required: true
+        },
+        isDisabled: {
+            type: Boolean,
+            required: true
         }
     }
 });
-</script>
+</script>  
