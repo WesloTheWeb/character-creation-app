@@ -1,5 +1,7 @@
 <template>
-    <button :disabled="isDisabled" :class="{ 'buttonProps': !isDisabled, 'disabled': isDisabled }">{{ title }}</button>
+    <button :disabled="isDisabled" :class="{ 'buttonProps': !isDisabled, 'disabled': isDisabled }">
+        {{ title }}
+    </button>
 </template>
   
 <script lang="ts">

@@ -1,9 +1,6 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <h1>Character Creation Application</h1>
   <CharacterCreationForm />
-
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-  content be here instead
 </template>
 
 <script lang="ts">
