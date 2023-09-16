@@ -1,0 +1,39 @@
+@import '../../variables.scss';
+
+
+body {
+    background-color: $appBackgroundColor;
+    font-size: 1.2rem;
+}
+
+
+textarea {
+    resize: none;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    width: 100%;
+    max-width: 80%;
+}
+
+select {
+    font-size: 1.2rem;
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 1rem;
+    max-width: 75%;
+    font-weight: bold;
+}
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    // color: #2c3e50;
+    color: #fff;
+}
