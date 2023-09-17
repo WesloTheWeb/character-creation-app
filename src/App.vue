@@ -20,6 +20,7 @@ export default defineComponent({
 
     const handleFormSubmission = (value: boolean) => {
       formFilledOut.value = value;
+      console.log("Character form submitted!");
     };
 
     return {

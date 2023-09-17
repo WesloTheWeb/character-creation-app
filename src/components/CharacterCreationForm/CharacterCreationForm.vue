@@ -1,5 +1,5 @@
 <template>
-  <form class='character-creation-form-container'>
+  <form class='character-creation-form-container' @submit.prevent="submitForm">
     <div class="character-section-grid">
       <section>
         <label>Character&apos;s name</label>
@@ -32,7 +32,6 @@
         </div>
       </section>
     </div>
-
     <label>Short story</label>
     <div>Characters: {{ story.length }}</div>
     <textarea v-model="story"></textarea>
@@ -41,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent, ref, computed, } from 'vue';
 import { useStore } from 'vuex';
 import Button from '../Button/Button.vue';
 
@@ -51,7 +50,7 @@ export default defineComponent({
     Button
   },
 
-  setup() {
+  setup(props, { emit }) {
     const store = useStore();
 
     // v-models:
@@ -103,6 +102,18 @@ export default defineComponent({
       'Warrior', 'Paladin', 'Hunter', 'Rogue', 'Priest', 'Shaman', 'Mage', 'Warlock', 'Druid', 'Monk', 'Death Knight', 'Demon Hunter', 'Evoker'
     ];
 
+    // ? helper functions
+    const clearForm = () => {
+      characterName.value = "";
+      characterAge.value = 18;
+      characterGender.value = "Male";
+      hardcoreMode.value = "No";
+      story.value = "";
+      characterClass.value = "";
+      characterNameError.value = "";
+      characterAgeError.value = "";
+    };
+    
     // connect to vuex store dispatch
     const submitForm = () => {
       if (isFormValid.value) {
@@ -116,7 +127,10 @@ export default defineComponent({
         };
         store.dispatch('updateCharacter', character);
       }
-    }
+
+      emit('form-submitted', true);
+      clearForm();
+    };
 
     return {
       characterName,
