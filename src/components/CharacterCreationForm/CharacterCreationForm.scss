@@ -1,8 +1,14 @@
+@import '../../../variables.scss';
+
 .character-creation-form-container {
     background-color: #857878;
     padding: 2rem;
     border: 5px solid orange;
     border-radius: 5px;
+
+    @media #{ $mq-smallScreen } {
+        padding: 1.2rem;
+    }
 
     label {
         display: block;
@@ -22,17 +28,26 @@
 .roles {
     label, input {
         display: inline-block;
+        cursor: pointer;
     }
 }
 
 .role-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
+    @media #{ $mq-smallScreen } {
+        display: block;
+    }
 }
 
 .character-section-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
+    @media #{ $mq-smallScreen } {
+        display: block;
+    }
 }
 
 .error-message {
