@@ -42,6 +42,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
+import { useStore } from 'vuex';
 import Button from '../Button/Button.vue';
 
 export default defineComponent({
@@ -49,7 +50,10 @@ export default defineComponent({
   components: {
     Button
   },
+
   setup() {
+    const store = useStore();
+
     // v-models:
     const characterName = ref("");
     const characterAge = ref(18);
@@ -99,7 +103,20 @@ export default defineComponent({
       'Warrior', 'Paladin', 'Hunter', 'Rogue', 'Priest', 'Shaman', 'Mage', 'Warlock', 'Druid', 'Monk', 'Death Knight', 'Demon Hunter', 'Evoker'
     ];
 
-    console.log(classes.length);
+    // connect to vuex store dispatch
+    const submitForm = () => {
+      if (isFormValid.value) {
+        const character = {
+          name: characterName.value,
+          age: characterAge.value,
+          gender: characterGender.value,
+          class: characterClass.value,
+          hardcoreMode: hardcoreMode.value,
+          story: story.value
+        };
+        store.dispatch('updateCharacter', character);
+      }
+    }
 
     return {
       characterName,
@@ -115,10 +132,10 @@ export default defineComponent({
       validateName,
       validateAge,
       ensureNumeric,
-
+      submitForm
     }
   }
-});
+})
 </script>
 
 <style lang="scss">
