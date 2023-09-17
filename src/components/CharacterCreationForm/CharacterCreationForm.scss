@@ -19,9 +19,20 @@
     }
 }
 
-.character-section-grid {
+.roles {
+    label, input {
+        display: inline-block;
+    }
+}
+
+.role-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+.character-section-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .error-message {
